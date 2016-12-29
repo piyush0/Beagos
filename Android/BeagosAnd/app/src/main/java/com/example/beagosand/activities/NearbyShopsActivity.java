@@ -1,4 +1,4 @@
-package com.example.beagosand;
+package com.example.beagosand.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 
+import com.example.beagosand.R;
 import com.example.beagosand.adapters.NearbyShopsAdapter;
 import com.example.beagosand.models.Shop;
 import com.example.beagosand.utils.FontsOverride;

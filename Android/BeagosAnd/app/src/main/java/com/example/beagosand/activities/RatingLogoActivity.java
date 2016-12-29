@@ -1,4 +1,4 @@
-package com.example.beagosand;
+package com.example.beagosand.activities;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.beagosand.R;
 import com.example.beagosand.utils.FontsOverride;
 import com.github.anastr.speedviewlib.TubeSpeedometer;
 

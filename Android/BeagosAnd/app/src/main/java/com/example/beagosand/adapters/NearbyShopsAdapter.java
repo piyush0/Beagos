@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 import com.example.beagosand.R;
-import com.example.beagosand.ShopDetailsActivity;
+import com.example.beagosand.activities.ShopDetailsActivity;
 import com.example.beagosand.models.Shop;
 
 import java.util.ArrayList;

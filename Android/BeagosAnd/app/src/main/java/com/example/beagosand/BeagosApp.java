@@ -10,6 +10,8 @@ import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.example.beagosand.activities.NearbyShopsActivity;
+import com.example.beagosand.activities.ShopDetailsActivity;
 import com.example.beagosand.utils.FontsOverride;
 
 import org.altbeacon.beacon.BeaconConsumer;
@@ -23,8 +25,6 @@ import org.altbeacon.beacon.powersave.BackgroundPowerSaver;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import static org.altbeacon.beacon.MonitorNotifier.INSIDE;
 
 
 /**
@@ -73,7 +73,7 @@ public class BeagosApp extends Application implements BeaconConsumer {
         ssnRegionMap.put("0x0117c55d6660",new Region("Office",nameSpaceId,Identifier.parse("0x0117c55d6660"),null));
         ssnRegionMap.put("0x0117c55ec086",new Region("Ruby Room",nameSpaceId,Identifier.parse("0x0117c55ec086"),null));
 
-        beaconManager = BeaconManager.getInstanceForApplication(this);
+        beaconManager = BeaconManager.getInstanceForApplication(getApplicationContext());
         beaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
         new BackgroundPowerSaver(this);
