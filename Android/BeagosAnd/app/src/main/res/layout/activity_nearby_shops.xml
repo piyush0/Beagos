@@ -12,11 +12,13 @@
     tools:context="com.example.beagosand.NearbyShopsActivity">
 
     <TextView
-        android:text="Nearby"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="Nearby Shops"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:id="@+id/activity_nearby_shops_rv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>

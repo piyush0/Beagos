@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.beagosand.R;
 import com.example.beagosand.models.Shop;
 
 import java.util.ArrayList;
@@ -30,11 +31,29 @@ public class NearbyShopsAdapter extends RecyclerView.Adapter<NearbyShopsAdapter.
     @Override
     public ShopViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        return null;
+        View view = li.inflate(R.layout.item_nearby_shops, parent, false);
+
+        ShopViewHolder shopViewHolder = new ShopViewHolder(view);
+
+        shopViewHolder.tv_shopName = (TextView) view.findViewById(R.id.item_nearby_shop_tv_name);
+        shopViewHolder.iv_shop = (ImageView) view.findViewById(R.id.item_nearby_shop_iv_pic);
+
+        return shopViewHolder;
     }
 
     @Override
     public void onBindViewHolder(ShopViewHolder holder, int position) {
+        Shop shop = shops.get(position);
+
+        holder.tv_shopName.setText(shop.getName());
+        //TODO: Set pic
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Start the fragment.
+            }
+        });
 
     }
 
