@@ -22,6 +22,8 @@ public class RatingLogoActivity extends AppCompatActivity {
     private TextView tv_rating;
     String uuid;
 
+    String URL = "http://192.168.1.43:8000/details";
+
     private Handler handler;
 
     @Override
