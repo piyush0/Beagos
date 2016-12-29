@@ -2,11 +2,13 @@ package com.example.beagosand.models;
 
 import java.util.ArrayList;
 
+import io.realm.RealmObject;
+
 /**
  * Created by piyush0 on 29/12/16.
  */
 
-public class Shop {
+public class Shop extends RealmObject {
 
     String name;
     String UUID;
@@ -14,17 +16,8 @@ public class Shop {
     String imageURL;
     Float rating;
 
-    public static ArrayList<Shop> getDummyShops() {
 
-        ArrayList<Shop> retVal = new ArrayList<>();
-
-        retVal.add(new Shop("Apple", 70.0F, "IOS Room", "1"));
-        retVal.add(new Shop("Adidas", 42.2F, "Python Room", "2"));
-        retVal.add(new Shop("Reebok", 31.4F, "Ruby Room", "3"));
-        retVal.add(new Shop("Kfc", 77.5F, "Git Room", "4"));
-
-
-        return retVal;
+    public Shop() {
     }
 
     public Float getRating() {

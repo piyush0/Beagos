@@ -23,11 +23,12 @@
 
             <ImageView
                 android:id="@+id/item_nearby_shop_iv_pic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
+                android:textColor="@color/colorPrimary"
                 android:id="@+id/item_nearby_shop_tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

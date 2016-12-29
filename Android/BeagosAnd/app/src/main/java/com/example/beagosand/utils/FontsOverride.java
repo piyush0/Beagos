@@ -13,6 +13,8 @@ import android.text.style.MetricAffectingSpan;
 import android.util.Log;
 import android.view.Window;
 
+import com.example.beagosand.R;
+
 import java.lang.reflect.Field;
 
 /**
@@ -42,8 +44,8 @@ public class FontsOverride {
         } else {
             act.setTitle(s);
         }
-//        window.setStatusBarColor(act.getResources().getColor(R.color.darkRed));
-//        window.setNavigationBarColor(act.getResources().getColor(R.color.darkRed));
+        window.setStatusBarColor(act.getResources().getColor(R.color.colorAccent));
+        window.setNavigationBarColor(act.getResources().getColor(R.color.colorPrimary));
 
 
     }
