@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.beagosand.adapters.NearbyShopsAdapter;
 import com.example.beagosand.models.Shop;
+import com.example.beagosand.utils.FontsOverride;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class NearbyShopsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_shops);
-
+        FontsOverride.applyFontForToolbarTitle(this, FontsOverride.FONT_PROXIMA_NOVA,getWindow());
 
         initShops();
         rv_shops = (RecyclerView) findViewById(R.id.activity_nearby_shops_rv);
