@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:name=".BeagosApp"
@@ -17,12 +19,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NearbyShopsActivity"></activity>
+        <activity android:name=".activities.NearbyShopsActivity" />
         <activity android:name=".activities.ShopDetailsActivity" />
         <activity android:name=".activities.RatingLogoActivity" />
-        <activity android:name=".activities.LoadingActivity">
-
-        </activity>
+        <activity android:name=".activities.LoadingActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

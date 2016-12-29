@@ -1,6 +1,10 @@
 package com.example.beagosand.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +25,8 @@ public class ShopDetailsActivity extends AppCompatActivity {
     private TextView tv_name, tv_address;
     private SimpleRatingBar ratingBar;
     private String source;
-    private Button btn_camera;
+    private FloatingActionButton btn_camera;
+
 
 
     @Override
@@ -29,7 +34,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_details);
         FontsOverride.applyFontForToolbarTitle(this, FontsOverride.FONT_PROXIMA_NOVA,getWindow());
-        btn_camera = (Button) findViewById(R.id.activity_shop_details_btn_camera);
+        btn_camera = (FloatingActionButton) findViewById(R.id.activity_shop_details_btn_camera);
         getShop();
         initViews();
     }
@@ -50,12 +55,12 @@ public class ShopDetailsActivity extends AppCompatActivity {
         String UUID = i.getStringExtra("UUID");
         this.source = i.getStringExtra("source");
 
-        if(this.source.equals("NearbyShopsActivity")){
-            btn_camera.setVisibility(View.GONE);
-        }
-        else{
-            btn_camera.setVisibility(View.VISIBLE);
-        }
+//        if(this.source.equals("NearbyShopsActivity")){
+//            btn_camera.setVisibility(View.GONE);
+//        }
+//        else{
+//            btn_camera.setVisibility(View.VISIBLE);
+//        }
 
         for(Shop s : Shop.getDummyShops()){
             if(s.getUUID().equals(UUID)){
@@ -74,9 +79,19 @@ public class ShopDetailsActivity extends AppCompatActivity {
         btn_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Send intent to camera activity
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(i, 1);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+        }
     }
 
     private float calculateStars(float rating) {

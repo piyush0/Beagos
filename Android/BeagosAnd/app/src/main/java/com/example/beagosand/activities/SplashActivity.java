@@ -22,7 +22,8 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent i = new Intent(SplashActivity.this, NearbyShopsActivity.class);
                 startActivity(i);
+                finish();
             }
-        }, 1000);
+        }, 1500);
     }
 }
