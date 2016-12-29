@@ -12,19 +12,27 @@ public class Shop {
     String UUID;
     String address;
     String imageURL;
-    Double rating;
+    Float rating;
 
-    public static ArrayList<Shop> getDummyShop() {
+    public static ArrayList<Shop> getDummyShops() {
 
         ArrayList<Shop> retVal = new ArrayList<>();
 
-        retVal.add(new Shop("Apple", 70.0, "IOS Room", "abcd"));
-        retVal.add(new Shop("Adidas", 42.2, "Python Room", "efgh"));
-        retVal.add(new Shop("Reebok", 31.4, "Ruby Room", "ijkl"));
-        retVal.add(new Shop("Kfc", 77.5, "Git Room", "abcd"));
+        retVal.add(new Shop("Apple", 70.0F, "IOS Room", "1"));
+        retVal.add(new Shop("Adidas", 42.2F, "Python Room", "2"));
+        retVal.add(new Shop("Reebok", 31.4F, "Ruby Room", "3"));
+        retVal.add(new Shop("Kfc", 77.5F, "Git Room", "4"));
 
 
         return retVal;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     public String getName() {
@@ -59,7 +67,7 @@ public class Shop {
         this.imageURL = imageURL;
     }
 
-    public Shop(String name, Double rating, String address, String UUID) {
+    public Shop(String name, Float rating, String address, String UUID) {
         this.name = name;
         this.rating = rating;
         this.address = address;

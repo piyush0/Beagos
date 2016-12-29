@@ -1,6 +1,7 @@
 package com.example.beagosand.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 
 import com.example.beagosand.R;
+import com.example.beagosand.ShopDetailsActivity;
 import com.example.beagosand.models.Shop;
 
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class NearbyShopsAdapter extends RecyclerView.Adapter<NearbyShopsAdapter.
 
     @Override
     public void onBindViewHolder(ShopViewHolder holder, int position) {
-        Shop shop = shops.get(position);
+        final Shop shop = shops.get(position);
 
         holder.tv_shopName.setText(shop.getName());
         //TODO: Set pic
@@ -51,7 +53,10 @@ public class NearbyShopsAdapter extends RecyclerView.Adapter<NearbyShopsAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Start the fragment.
+                Intent i = new Intent(context, ShopDetailsActivity.class);
+                i.putExtra("UUID", shop.getUUID());
+                i.putExtra("source", "NearbyShopsActivity");
+                context.startActivity(i);
             }
         });
 

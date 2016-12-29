@@ -22,6 +22,8 @@ public class NearbyShopsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_shops);
+
+        //This is done in every activity to change the font.
         FontsOverride.applyFontForToolbarTitle(this, FontsOverride.FONT_PROXIMA_NOVA,getWindow());
 
         initShops();
@@ -31,6 +33,6 @@ public class NearbyShopsActivity extends AppCompatActivity {
     }
 
     private void initShops() {
-        shops = Shop.getDummyShop();
+        shops = Shop.getDummyShops();
     }
 }
