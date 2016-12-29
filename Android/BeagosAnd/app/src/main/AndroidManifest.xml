@@ -19,15 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.NearbyShopsActivity">
+
+        </activity>
+        <activity android:name=".activities.ShopDetailsActivity" />
+        <activity android:name=".activities.RatingLogoActivity"></activity>
+        <activity android:name=".activities.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ShopDetailsActivity" />
-        <activity android:name=".activities.RatingLogoActivity"></activity>
-        <activity android:name=".activities.LoadingActivity"></activity>
     </application>
 
 </manifest>

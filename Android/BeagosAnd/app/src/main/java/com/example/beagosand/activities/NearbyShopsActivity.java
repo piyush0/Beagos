@@ -4,8 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 
+import com.example.beagosand.BeagosApp;
 import com.example.beagosand.R;
 import com.example.beagosand.adapters.NearbyShopsAdapter;
 import com.example.beagosand.models.Shop;
@@ -16,8 +18,13 @@ import java.util.ArrayList;
 public class NearbyShopsActivity extends AppCompatActivity {
 
     ArrayList<Shop> shops;
+    NearbyShopsAdapter adapter;
 
     RecyclerView rv_shops;
+
+//    BeagosApp.OnListRefreshListener onListRefreshListener;
+
+    public static final String TAG = "MainAct";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +36,25 @@ public class NearbyShopsActivity extends AppCompatActivity {
 
         initShops();
         rv_shops = (RecyclerView) findViewById(R.id.activity_nearby_shops_rv);
-        rv_shops.setAdapter(new NearbyShopsAdapter(this, shops));
+        adapter = new NearbyShopsAdapter(this, shops);
+        rv_shops.setAdapter(adapter);
         rv_shops.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+//        onListRefreshListener = new BeagosApp.OnListRefreshListener() {
+//            @Override
+//            public void onListRefresh() {
+//                adapter.notifyDataSetChanged();
+//            }
+//        };
+
+
+//        BeagosApp.getInstance().context = this;
+//        BeagosApp.getInstance().onListRefreshListener = onListRefreshListener;
     }
 
     private void initShops() {

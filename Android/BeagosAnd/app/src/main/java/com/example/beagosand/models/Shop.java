@@ -18,10 +18,10 @@ public class Shop {
 
         ArrayList<Shop> retVal = new ArrayList<>();
 
-        retVal.add(new Shop("Apple", 70.0F, "IOS Room", "1"));
-        retVal.add(new Shop("Adidas", 42.2F, "Python Room", "2"));
-        retVal.add(new Shop("Reebok", 31.4F, "Ruby Room", "3"));
-        retVal.add(new Shop("Kfc", 77.5F, "Git Room", "4"));
+        retVal.add(new Shop("Apple", 70.0F, "iOS Room", "0x0117c55fc452"));
+        retVal.add(new Shop("Adidas", 42.2F, "Python Room", "0x0117c555c65f"));
+        retVal.add(new Shop("Reebok", 31.4F, "Ruby Room", "0x0117c55ec086"));
+        retVal.add(new Shop("Kfc", 77.5F, "Git Room", "0x0117c55be3a8"));
 
 
         return retVal;
