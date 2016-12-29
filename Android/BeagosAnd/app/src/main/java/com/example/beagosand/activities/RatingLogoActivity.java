@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.beagosand.R;
+import com.example.beagosand.models.Shop;
 import com.example.beagosand.utils.FontsOverride;
 import com.github.anastr.speedviewlib.TubeSpeedometer;
+
+import io.realm.Realm;
 
 public class RatingLogoActivity extends AppCompatActivity {
 
@@ -17,7 +20,7 @@ public class RatingLogoActivity extends AppCompatActivity {
     private Float rating;
     private Button btn;
     private TextView tv_rating;
-
+    String uuid;
 
     private Handler handler;
 
@@ -26,24 +29,16 @@ public class RatingLogoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_logo);
 
-        FontsOverride.applyFontForToolbarTitle(this, FontsOverride.FONT_PROXIMA_NOVA,getWindow());
+        uuid = getIntent().getStringExtra("uuid");
+        FontsOverride.applyFontForToolbarTitle(this, FontsOverride.FONT_PROXIMA_NOVA, getWindow());
         handler = new Handler();
-        btn = (Button) findViewById(R.id.btnTemp);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getRating();
-                initViews();
-            }
-        });
-
-
-
+        getRating();
     }
 
     private void getRating() {
-        //TODO: Vasu will give.
-        this.rating = 93.3f;
+
+        this.rating = getIntent().getFloatExtra("Score", 0);
+        initViews();
     }
 
     private void initViews() {
@@ -55,6 +50,8 @@ public class RatingLogoActivity extends AppCompatActivity {
         tubeSpeedometer.setIndicatorWidth(59f);
         tubeSpeedometer.setMaxSpeed(100);
         tubeSpeedometer.speedTo(this.rating.intValue());
+
+
         handler.postDelayed(runnable, 1500);
     }
 
@@ -64,6 +61,13 @@ public class RatingLogoActivity extends AppCompatActivity {
             tubeSpeedometer.setWithTremble(false);
             tv_rating.setVisibility(View.VISIBLE);
             tv_rating.setText(String.valueOf(rating));
+
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            Shop shop = realm.where(Shop.class).equalTo("UUID", uuid).findFirst();
+            shop.setRating(rating);
+            realm.commitTransaction();
+
         }
     };
 }

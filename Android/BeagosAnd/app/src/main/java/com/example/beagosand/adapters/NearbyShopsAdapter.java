@@ -2,6 +2,7 @@ package com.example.beagosand.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,34 @@ public class NearbyShopsAdapter extends RecyclerView.Adapter<NearbyShopsAdapter.
         final Shop shop = shops.get(position);
 
         holder.tv_shopName.setText(shop.getName());
-        //TODO: Set pic
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            int num = Integer.valueOf(shop.getUUID());
+            switch (num) {
+                case 1:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.android_place));
+                    break;
+                case 2:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.python));
+                    break;
+                case 3:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.apple));
+                    break;
+                case 4:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.ruby));
+                    break;
+                case 5:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.test));
+                    break;
+                case 6:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.place1));
+                    break;
+                case 7:
+                    holder.iv_shop.setImageDrawable(context.getDrawable(R.drawable.apple));
+                    break;
+
+            }
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

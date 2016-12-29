@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 
+import android.content.SharedPreferences;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.beagosand.activities.NearbyShopsActivity;
 import com.example.beagosand.activities.ShopDetailsActivity;
+import com.example.beagosand.models.Shop;
 import com.example.beagosand.utils.FontsOverride;
 
 import org.altbeacon.beacon.BeaconConsumer;
@@ -26,14 +29,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import io.realm.Realm;
+
 
 /**
  * Created by piyush0 on 29/12/16.
  */
 
-public class BeagosApp extends Application  {
+public class BeagosApp extends Application {
 
-//    private static BeagosApp instance = null;
+    //    private static BeagosApp instance = null;
 //    private BeaconManager beaconManager;
 //    private static final Identifier nameSpaceId = Identifier.parse("0x5dc33487f02e477d4058");
 //
@@ -53,7 +58,38 @@ public class BeagosApp extends Application  {
     @Override
     public void onCreate() {
         super.onCreate();
+        Realm.init(this);
         FontsOverride.setDefaultFont(this, "SANS_SERIF", "fonts/" + FontsOverride.FONT_PROXIMA_NOVA);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if (!sharedPreferences.getBoolean("firstTime", false)) {
+
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+
+            Shop s1 = new Shop("Coding Ninjas", 70.0F, "Android Room", "1");
+            realm.copyToRealm(s1);
+            Shop s2 = new Shop("Ventursity", 42.2F, "Python Room", "2");
+            realm.copyToRealm(s2);
+            Shop s3 = new Shop("DTU", 31.4F, "iOS Room", "3");
+            realm.copyToRealm(s3);
+            Shop s4 = new Shop("NSIT", 77.5F, "Ruby Room", "4");
+            realm.copyToRealm(s4);
+            Shop s5 = new Shop("IITD", 77.5F, "Office", "5");
+            realm.copyToRealm(s5);
+            Shop s6 = new Shop("IIITD", 69.5F, "Git Room", "6");
+            realm.copyToRealm(s6);
+            Shop s7 = new Shop("Office", 78.5F, "Test Room", "7");
+            realm.copyToRealm(s7);
+
+            realm.commitTransaction();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }
+
+
 //        instance = this;
 //        //check signed in
 //        setUpBeacon();
